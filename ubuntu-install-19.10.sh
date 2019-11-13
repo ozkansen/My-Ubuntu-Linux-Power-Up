@@ -100,21 +100,9 @@ sudo apt install ubuntu-restricted-extras \
                 neovim \
                 sublime-merge \
                 sublime-text \
+                aria2 \
                 -y -q=2
 
-sudo snap install vlc \
-                  telegram-desktop \
-                  discord \
-                  spotify \
-                  htop \
-                  postman
-
-sudo snap install code --classic
-sudo snap install pycharm-professional --classic
-sudo snap install datagrip --classic
-sudo snap install webstorm --classic
-sudo snap install slack --classic
-sudo snap install skype --classic
 
 # SmartGit
 wget -q https://www.syntevo.com/downloads/smartgit/smartgit-19_1_4.deb
@@ -165,7 +153,8 @@ pip3 install --user --no-cache-dir --upgrade --force-reinstall \
     pip \
     virtualenv \
     pipenv \
-    pip-check
+    pip-check \
+    httpie
 
 # Npm Packages
 npm install npm@latest -g
@@ -180,7 +169,10 @@ npm install -g loadtest \
                typescript \
                prettier-stylelint \
                prettier-eslint \
-               prettier-tslint
+               prettier-tslint \
+               yarn \
+               @vue/cli \
+               @vue/cli-init
 
 # wrk & wrk2 test tool
 git clone https://github.com/wg/wrk.git --depth 1
@@ -339,8 +331,8 @@ sudo wget https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-lin
 sudo chmod +x /usr/local/bin/ctop
 
 # Add dockerclean command
-echo "alias dclean='docker system prune -f && docker volume prune -f && docker network prune -f'" >> ~/.profile >> ~/.bashrc
-echo "alias dremove='docker rm \$(docker ps -aq) -f && docker rmi \$(docker images -q) -f && docker volume rm \$(docker volume ls -q) -f'" >> ~/.profile >> ~/.bashrc
+echo "alias dclean='docker system prune -f; docker volume prune -f; docker network prune -f'" >> ~/.profile >> ~/.bashrc
+echo "alias dremove='docker rm \$(docker ps -aq) -f; docker rmi \$(docker images -q) -f; docker volume rm \$(docker volume ls -q) -f'" >> ~/.profile >> ~/.bashrc
 echo "alias dlist='docker ps -a'" >> ~/.profile >> ~/.bashrc
 echo "alias dstop='docker stop \$(docker ps -aq)'" >> ~/.profile >> ~/.bashrc
 
@@ -348,8 +340,11 @@ echo "alias dstop='docker stop \$(docker ps -aq)'" >> ~/.profile >> ~/.bashrc
 echo "alias dcomposereup='docker-compose up --build --force-recreate --remove-orphans'" >> ~/.profile >> ~/.bashrc
 
 # Add update & clean Apt Update Clean
-echo "alias update='sudo apt update && sudo apt list --upgradable && sudo apt dist-upgrade -y && npm update -g && pip-check -UHu'" >> ~/.profile >> ~/.bashrc
-echo "alias clean='sudo apt clean && sudo apt purge && sudo apt autoclean && sudo apt autoremove'" >> ~/.profile >> ~/.bashrc
+echo "alias update='sudo apt update; sudo apt list --upgradable; sudo apt dist-upgrade -y; npm update -g; pip-check -UHu'" >> ~/.profile >> ~/.bashrc
+echo "alias clean='sudo apt clean; sudo apt purge; sudo apt autoclean; sudo apt autoremove'" >> ~/.profile >> ~/.bashrc
+
+# Add custom commands
+echo "alias wget++='aria2c -x 16 -s 16 -k 1M'" >> ~/.profile >> ~/.bashrc
 
 # Add system watches files
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -398,3 +393,19 @@ echo "echo -n\"
 ***                                                        ***
 **************************************************************
 \"" >> ~/.bashrc
+
+echo -n "
+sudo snap install vlc \
+                  telegram-desktop \
+                  discord \
+                  spotify \
+                  htop \
+                  postman
+
+sudo snap install code --classic
+sudo snap install pycharm-professional --classic
+sudo snap install datagrip --classic
+sudo snap install webstorm --classic
+sudo snap install slack --classic
+sudo snap install skype --classic
+"
