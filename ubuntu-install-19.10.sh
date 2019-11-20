@@ -101,6 +101,7 @@ sudo apt install ubuntu-restricted-extras \
                 sublime-merge \
                 sublime-text \
                 aria2 \
+                net-tools \
                 -y -q=2
 
 
