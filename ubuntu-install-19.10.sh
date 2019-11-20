@@ -102,6 +102,7 @@ sudo apt install ubuntu-restricted-extras \
                 sublime-text \
                 aria2 \
                 net-tools \
+                asciinema \
                 -y -q=2
 
 
