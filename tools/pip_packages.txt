@@ -1,0 +1,6 @@
+pip
+virtualenv
+pipenv
+pip-check
+httpie
+ipython
