@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # wrk & wrk2 test tool
 git clone https://github.com/wg/wrk.git --depth 1
 cd wrk

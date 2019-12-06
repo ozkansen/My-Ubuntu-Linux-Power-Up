@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Nodejs Apt Repo
 # TODO: Check new version : https://github.com/nodesource/distributions/blob/master/README.md
 # TODO: Other Check Main Site : https://nodejs.org/en/
