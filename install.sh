@@ -55,6 +55,7 @@ sh ./tools/test_tools.sh
 sh ./tools/other_tools.sh
 sh ./tools/fonts.sh
 sh ./tools/docker.sh
+sh ./tools/jsonlint.sh
 
 # Python Packages
 pip3 install --user --no-cache-dir --upgrade --force-reinstall -r ./tools/pip_packages.txt
