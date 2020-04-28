@@ -66,7 +66,11 @@ install_python_packages() {
     poetry \
     ipython \
     jupyter \
-    jupyter_contrib_nbextensions
+    jupyter_contrib_nbextensions \
+    jupyter_nbextensions_configurator
+
+    jupyter contrib nbextension install --user
+    jupyter nbextensions_configurator enable --user
 }
 install_python_packages;
 
