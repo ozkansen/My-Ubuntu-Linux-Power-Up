@@ -51,7 +51,6 @@ install_extras_ubuntu_packages() {
         asciinema \
         tilix \
         qbittorrent \
-        shutter \
         simplescreenrecorder \
         obs-studio \
         ffmpeg
@@ -125,10 +124,11 @@ install_fonts() {
     wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
     wget https://github.com/tonsky/FiraCode/releases/download/3.1/FiraCode_3.1.zip
     wget https://download.jetbrains.com/fonts/JetBrainsMono-1.0.3.zip
+    mkdir ~/.fonts/
     unzip -o Hack-v3.003-ttf.zip -d ~/.fonts/hack/
     unzip -o FiraCode_3.1.zip -d ~/.fonts/firacode/
     unzip -o JetBrainsMono-1.0.3.zip -d ~/.fonts/jetbrains/
-
+    rm -f Hack-v3.003-ttf.zip FiraCode_3.1.zip JetBrainsMono-1.0.3.zip
     fc-cache -f -v
 }
 install_fonts;
@@ -140,7 +140,9 @@ install_vscode () {
     sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt-get install code
+    rm -f packages.microsoft.gpg
 }
+install_vscode;
 
 
 
