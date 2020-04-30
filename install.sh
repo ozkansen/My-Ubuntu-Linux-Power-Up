@@ -2,6 +2,10 @@
 
 # Ubuntu 20.04 First Setup Scripts
 
+# System Settings
+# Update system watch file limits
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 
 # System Update & Upgrade
 update_system() {
@@ -149,8 +153,10 @@ install_vscode () {
 install_vscode;
 
 
-
-
-# System Settings
-# Update system watch file limits
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+# Virtualbox & Vagrant install
+install_virtualbox() {
+    echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+    sudo apt install -y virtualbox virtualbox-ext-pack vagrant
+    sudo usermod -a -G vboxusers $USER
+}
+install_virtualbox;
