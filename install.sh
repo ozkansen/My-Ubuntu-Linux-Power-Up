@@ -44,7 +44,8 @@ install_default_ubuntu_packages() {
         default-jdk \
         golang-go \
         silversearcher-ag \
-        htop
+        htop \
+        bat
 }
 install_default_ubuntu_packages;
 
