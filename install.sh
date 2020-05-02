@@ -161,3 +161,13 @@ install_virtualbox() {
     sudo usermod -a -G vboxusers $USER
 }
 install_virtualbox;
+
+
+# ytop console cpu temp vs. monitoring tool
+install_ytop() {
+    wget https://github.com/cjbassi/ytop/releases/download/0.6.0/ytop-0.6.0-x86_64-unknown-linux-gnu.tar.gz
+    tar zxvf ytop-0.6.0-x86_64-unknown-linux-gnu.tar.gz
+    rm ytop-0.6.0-x86_64-unknown-linux-gnu.tar.gz
+    mv ytop ~/.local/bin/
+}
+install_ytop;
