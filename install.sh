@@ -171,3 +171,15 @@ install_ytop() {
     mv ytop ~/.local/bin/
 }
 install_ytop;
+
+
+install_nodejs() {
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    mkdir ~/.node_modules_global
+    npm config set prefix=$HOME/.node_modules_global
+    npm config set init.author.name "Özkan ŞEN"
+    npm config set init.author.email "ozkansen@gmail.com"
+    echo export PATH="~/.node_modules_global/bin/:\$PATH" >> ~/.bashrc
+}
