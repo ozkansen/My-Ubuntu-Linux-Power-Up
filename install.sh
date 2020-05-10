@@ -6,6 +6,25 @@
 # Update system watch file limits
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
+# Add Latest Repo
+# # Nvidia Latest
+sudo add-apt-repository ppa:graphics-drivers -yn
+
+# # Git Latest
+sudo add-apt-repository ppa:git-core/ppa -yn
+
+# QBittorrent Latest
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -yn
+
+# Google Chrome
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
+# # Typora
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+
+
 
 # System Update & Upgrade
 update_system() {
@@ -45,7 +64,8 @@ install_default_ubuntu_packages() {
         golang-go \
         silversearcher-ag \
         htop \
-        bat
+        bat \
+        git
 }
 install_default_ubuntu_packages;
 
@@ -58,7 +78,8 @@ install_extras_ubuntu_packages() {
         qbittorrent \
         simplescreenrecorder \
         obs-studio \
-        ffmpeg
+        ffmpeg \
+        typora
 }
 install_extras_ubuntu_packages;
 
@@ -182,4 +203,50 @@ install_nodejs() {
     npm config set init.author.name "Özkan ŞEN"
     npm config set init.author.email "ozkansen@gmail.com"
     echo export PATH="~/.node_modules_global/bin/:\$PATH" >> ~/.bashrc
+
+    npm install npm@latest -g
+    npm rebuild
 }
+install_nodejs;
+
+
+install_docker() {
+    sudo apt install -y docker docker.io docker-compose
+    sudo usermod -aG docker $USER
+}
+install_docker;
+
+
+install_p4mergetool() {
+    wget https://cdist2.perforce.com/perforce/r20.1/bin.linux26x86_64/p4v.tgz
+    tar zxvf p4v.tgz
+    sudo cp -r p4v-* /usr/local/p4v/
+    rm -r p4v*
+    sudo ln -s /usr/local/p4v/bin/p4merge /usr/local/bin/p4merge
+}
+
+
+settings_git() {
+    git config --global user.name "Özkan ŞEN"
+    git config --global user.email "ozkansen@gmail.com"
+    git config --global core.editor "code --wait"
+    git config --global credential.helper store
+
+    git config --global diff.tool p4merge
+    git config --global difftool.p4merge.path /usr/local/bin/p4merge
+    git config --global difftool.prompt false
+
+    git config --global merge.tool p4merge
+    git config --global mergetool.p4merge.path /usr/local/bin/p4merge
+    git config --global mergetool.prompt false
+}
+settings_git;
+
+
+install_smartgit() {
+    wget -q https://www.syntevo.com/downloads/smartgit/smartgit-20_1_2.deb
+    sudo dpkg -i smartgit*.deb
+    rm smartgit*.deb
+    sudo apt --fix-broken install -y
+}
+install_smartgit;
