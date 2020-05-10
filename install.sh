@@ -94,7 +94,7 @@ install_python_packages() {
     jupyter \
     jupyter_contrib_nbextensions \
     jupyter_nbextensions_configurator
-    
+
     source ~/.profile
     jupyter contrib nbextension install --user
     jupyter nbextensions_configurator enable --user
