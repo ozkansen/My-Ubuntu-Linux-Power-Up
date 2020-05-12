@@ -226,6 +226,7 @@ install_p4mergetool() {
     rm -r p4v*
     sudo ln -s /usr/local/p4v/bin/p4merge /usr/local/bin/p4merge
 }
+install_p4mergetool;
 
 
 settings_git() {
