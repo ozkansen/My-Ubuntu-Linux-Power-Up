@@ -57,8 +57,8 @@ function system_upgrade() {
 function install_packages() {
     sudo apt install -y \
         ubuntu-restricted-extras \
-        ubuntu-restricted-addons
-    aria2 \
+        ubuntu-restricted-addons \
+        aria2 \
         asciinema \
         tilix \
         qbittorrent \
