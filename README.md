@@ -73,7 +73,7 @@ sudo apt update
 
   ```
   ...
-  
+
   fs.inotify.max_user_watches=524288
   vm.swappiness=10
   ```
@@ -86,11 +86,11 @@ sudo apt update
 - Edit file `/etc/fstab`
 
   `/` root line add "noatime" parameter
-  
+
   ```
   # Before
      8   │ /dev/mapper/vgubuntu-root /               ext4    errors=remount-ro 0       1
-  
+
   # After
    8   │ /dev/mapper/vgubuntu-root /               ext4    noatime,errors=remount-ro 0       1
   ```
@@ -100,7 +100,7 @@ sudo apt update
   ```bash
   # Write Cache Status View
   sudo hdparm -W /dev/sda
-  
+
   # Change Cache Status
   sudo hdparm -W1 /dev/sda # Activate
   sudo hdparm -W0 /dev/sda # Deactivate
