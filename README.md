@@ -76,6 +76,7 @@ sudo apt update
 
   fs.inotify.max_user_watches=524288
   vm.swappiness=10
+  vm.vfs_cache_pressure=50
   ```
 
   ```bash
